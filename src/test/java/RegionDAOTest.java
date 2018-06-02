@@ -28,6 +28,8 @@ public class RegionDAOTest {
         MockitoAnnotations.initMocks(this);
     }
     
+    // Test successful saveRegion call on RegionDao.
+    // This is a successful case.
     @Test
     public void test() throws InvalidKeyException, URISyntaxException, StorageException
     {
