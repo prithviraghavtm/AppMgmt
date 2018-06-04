@@ -82,6 +82,7 @@ public class HelloWorldController {
 	}	
 }
 
+// Class for Region Entity.
 class Region
 {
 	private String code;
