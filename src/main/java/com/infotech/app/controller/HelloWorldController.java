@@ -63,12 +63,12 @@ public class HelloWorldController {
 	}	
 	
 	@PostMapping(value="/addRegion1")
-	public String AddRegion(@RequestBody  Region region)
+	public String AddRegion1(@RequestBody  Region region)
 	{
 		try
 		{
 			RegionModel reg1 = new RegionModel(region.getCode(), region.getRegion());
-			TableAccessHelper<RegionModel> regionAccessHelper = new TableAccessHelper<RegionModel> ("BankCodeToRegion");
+			TableAccessHelper<RegionModel> regionAccessHelper = new TableAccessHelper<RegionModel> ("BankCodeToRegion", RegionModel.class);
 			RegionDAO dao = new RegionDAO(regionAccessHelper);
 			dao.SaveRegion(reg1);
 		
@@ -79,7 +79,26 @@ public class HelloWorldController {
 		{
 			return "failure" + e.getMessage();
 		}
-	}	
+	}
+	
+	@PostMapping(value="/deleteRegion1")
+	public String deleteRegion(@RequestBody  Region region)
+	{
+		try
+		{
+			RegionModel reg1 = new RegionModel(region.getCode(), region.getRegion());
+			TableAccessHelper<RegionModel> regionAccessHelper = new TableAccessHelper<RegionModel> ("BankCodeToRegion", RegionModel.class);
+			RegionDAO dao = new RegionDAO(regionAccessHelper);
+			dao.deleteRegion(region.getCode(), region.getRegion());
+		
+			return "hey wass up!!";
+		}
+		
+		catch(Exception e)
+		{
+			return "failure" + e.getMessage();
+		}
+	}
 }
 
 // Class for Region Entity.

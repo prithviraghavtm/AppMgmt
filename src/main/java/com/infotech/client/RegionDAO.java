@@ -1,5 +1,5 @@
 package com.infotech.client;
-import com.microsoft.azure.storage.table.*;
+//import com.microsoft.azure.storage.table.*;
 
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
@@ -16,6 +16,7 @@ public class RegionDAO
 	@Autowired
 	private TableAccessHelper<RegionModel> accessHelper;
 	
+	// Constructor.
 	public RegionDAO(TableAccessHelper<RegionModel> accessHelper)
 	{
 		this.accessHelper = accessHelper;
@@ -26,4 +27,8 @@ public class RegionDAO
 		this.accessHelper.save(reg1);	
 	}
 	
+	public void deleteRegion(String partitionKey, String rowKey) throws InvalidKeyException, URISyntaxException, StorageException
+	{
+		this.accessHelper.delete(partitionKey, rowKey);	
+	}
 }
