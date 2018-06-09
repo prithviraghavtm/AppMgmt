@@ -7,5 +7,9 @@ public class AgentModel {
 	
 	public String AgentId;
 	
+	public String partitionKey;
+	
+	public String docId;
+	
 	public Date CreationDate;
 }

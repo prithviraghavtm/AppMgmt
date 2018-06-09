@@ -99,6 +99,37 @@ public class HelloWorldController {
 			return "failure" + e.getMessage();
 		}
 	}
+	
+	@PostMapping(value="/addAgent")
+	public String addAgent(@RequestBody  Agent agent)
+	{
+		try
+		{
+            AgentModel agentm = new AgentModel();
+            agentm.AgentId = agent.AgentId;
+            agentm.partitionKey = agent.AgentId;
+            agentm.AgentName = agent.AgentName;
+            agentm.docId = "1";
+            
+            AgentDAO dao = new AgentDAO();
+            dao.createTodoItem(agentm);
+		
+			return "hey wass up!!";
+		}
+		
+		catch(Exception e)
+		{
+			return "failure" + e.getMessage();
+		}
+	}
+}
+
+class Agent
+{
+	public String AgentName;
+	
+	public String AgentId;
+	
 }
 
 // Class for Region Entity.
